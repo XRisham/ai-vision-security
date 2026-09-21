@@ -1,0 +1,2 @@
+import {useEffect,useState} from 'react';
+export function useLive(){const [live,setLive]=useState(null),[error,setError]=useState('');useEffect(()=>{let socket;let retry;const connect=()=>{socket=new WebSocket(`${location.protocol==='https:'?'wss':'ws'}://${location.host}/ws/live`);socket.onmessage=e=>{setLive(JSON.parse(e.data));setError('')};socket.onerror=()=>setError('Live connection unavailable');socket.onclose=()=>retry=setTimeout(connect,2000)};connect();return()=>{clearTimeout(retry);socket?.close()}},[]);return{live,error}}

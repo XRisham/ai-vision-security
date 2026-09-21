@@ -1,0 +1,1 @@
+export default function LiveMonitor({active}){return <section className="panel video"><h2>Live Monitor</h2>{active?<img src="/api/cameras/stream" alt="Processed local camera stream"/>:<p>Camera is offline. Start a webcam or video source in Cameras.</p>}</section>}

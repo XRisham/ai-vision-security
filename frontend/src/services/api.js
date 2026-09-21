@@ -1,0 +1,2 @@
+const request=async(path,options={})=>{const r=await fetch(`/api${path}`,{headers:{'Content-Type':'application/json'},...options});if(!r.ok)throw new Error(await r.text()||r.statusText);return r.status===204?null:r.json()};
+export const api={stats:()=>request('/statistics'),events:()=>request('/events'),settings:()=>request('/settings'),saveSettings:(body)=>request('/settings',{method:'PUT',body:JSON.stringify(body)}),start:(source)=>request('/cameras/start',{method:'POST',body:JSON.stringify({source})}),stop:()=>request('/cameras/stop',{method:'POST'})};

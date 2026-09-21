@@ -1,0 +1,1 @@
+export default function Sidebar({page,setPage}){return <aside><div className="brand">AI <span>VISION</span></div>{['Dashboard','Live Monitor','Events','Analytics','Cameras','Settings'].map(x=><button className={page===x?'nav active':'nav'} onClick={()=>setPage(x)} key={x}>{x}</button>)}</aside>}

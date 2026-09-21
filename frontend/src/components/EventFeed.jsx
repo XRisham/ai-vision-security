@@ -1,0 +1,1 @@
+export default function EventFeed({events=[]}){return <section className="panel"><h2>Latest Events</h2>{events.length?events.map(e=><div className="event" key={e.id||`${e.event_type}-${e.track_id}`}><b className={e.severity?.toLowerCase()}>{e.severity}</b><span>{e.message}</span></div>):<p>No recorded events yet.</p>}</section>}
